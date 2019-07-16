@@ -1,5 +1,11 @@
 #!/bin/bash
 TIMEOUT=10
+APPLIST_TO_TERMINATE=(
+	# edit this list
+	qbittorrent
+	steam
+	discord
+)
 
 close_windows () {
 	wmctrl -l | awk '{print $1}' | while read -r wId
@@ -20,7 +26,7 @@ window_timeout_countdown () {
 }
 
 terminate_processes () {
-	pgrep -f $USER | grep -v "$$" | while read -r pId
+	pidof $APPLIST_TO_TERMINATE | while read -r pId
 	do
 		kill -s TERM $pId
 		tail --pid=$pId -f /dev/null
