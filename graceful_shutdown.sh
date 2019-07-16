@@ -4,7 +4,8 @@ APPLIST_TO_TERMINATE=(
 	# edit this list
 	qbittorrent
 	steam
-	discord
+	Discord
+	telegram-desktop
 )
 
 close_windows () {
