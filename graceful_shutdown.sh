@@ -27,10 +27,10 @@ window_timeout_countdown () {
 }
 
 terminate_processes () {
-	pidof $APPLIST_TO_TERMINATE | while read -r pId
+	pidof ${APPLIST_TO_TERMINATE[@]} | tr ' ' '\n' | while read -r pId
 	do
-		kill -s TERM $pId
-		tail --pid=$pId -f /dev/null
+		kill -15 $pId
+		tail --pid=$pId -f /dev/null # wait until terminate it
 	done
 }
 
