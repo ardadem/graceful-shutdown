@@ -37,4 +37,4 @@ terminate_processes () {
 close_windows
 window_timeout_countdown
 terminate_processes
-systemctl poweroff
+poweroff
